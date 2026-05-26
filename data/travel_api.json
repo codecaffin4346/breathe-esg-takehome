@@ -1,0 +1,26 @@
+[
+    {
+        "trip_id": "TRP-9081",
+        "employee": "jane.doe@acme.com",
+        "category": "FLIGHT",
+        "date": "2023-03-15",
+        "details": {
+            "origin": "SFO",
+            "destination": "LHR",
+            "class": "ECONOMY",
+            "distance_km": null
+        }
+    },
+    {
+        "trip_id": "TRP-9082",
+        "employee": "john.smith@acme.com",
+        "category": "FLIGHT",
+        "date": "2023-03-20",
+        "details": {
+            "origin": "JFK",
+            "destination": "LHR",
+            "class": "BUSINESS",
+            "distance_km": 5540
+        }
+    }
+]
