@@ -22,7 +22,7 @@ function App() {
 
   const fetchEmissions = async () => {
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/emissions/')
+      const res = await fetch('/api/emissions/')
       if (!res.ok) throw new Error('Failed to fetch data')
       const data = await res.json()
       setEmissions(data)
@@ -39,7 +39,7 @@ function App() {
 
   const handleApprove = async (id: string) => {
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/emissions/${id}/approve/`, {
+      const res = await fetch(`/api/emissions/${id}/approve/`, {
         method: 'POST',
       })
       if (!res.ok) throw new Error('Failed to approve')

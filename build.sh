@@ -8,10 +8,10 @@ npm install
 npm run build
 cd ..
 
-# Build backend
-cd backend
-pip install -r requirements.txt
+# Install backend requirements
+pip install -r backend/requirements.txt
+
+# Run Django management commands (manage.py is in the root directory)
 python manage.py collectstatic --no-input
 python manage.py migrate
 python manage.py load_mock_data
-cd ..

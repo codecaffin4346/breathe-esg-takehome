@@ -18,8 +18,8 @@ COPY . /app/
 # Make the build script executable and run it
 RUN chmod +x ./build.sh && ./build.sh
 
-# Expose the port (Railway provides $PORT, defaulting to 8000 here)
+# Expose the port
 EXPOSE 8000
 
-# Start command
-CMD cd backend && gunicorn backend.wsgi:application --bind 0.0.0.0:$PORT
+# Start command (run from /app, not /app/backend)
+CMD gunicorn backend.wsgi:application --bind 0.0.0.0:${PORT:-8000}
