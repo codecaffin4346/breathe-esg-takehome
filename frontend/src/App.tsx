@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 import './index.css'
 
 interface Emission {
@@ -22,12 +23,10 @@ function App() {
 
   const fetchEmissions = async () => {
     try {
-      const res = await fetch('/api/emissions/')
-      if (!res.ok) throw new Error('Failed to fetch data')
-      const data = await res.json()
-      setEmissions(data)
+      const res = await axios.get<Emission[]>('/api/emissions/')
+      setEmissions(res.data)
     } catch (err: any) {
-      setError(err.message)
+      setError(err.response?.data?.detail || err.message)
     } finally {
       setLoading(false)
     }
@@ -39,13 +38,10 @@ function App() {
 
   const handleApprove = async (id: string) => {
     try {
-      const res = await fetch(`/api/emissions/${id}/approve/`, {
-        method: 'POST',
-      })
-      if (!res.ok) throw new Error('Failed to approve')
+      await axios.post(`/api/emissions/${id}/approve/`)
       fetchEmissions()
     } catch (err: any) {
-      alert(err.message)
+      alert(err.response?.data?.detail || err.message)
     }
   }
 
